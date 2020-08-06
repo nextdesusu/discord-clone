@@ -2,10 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { CameraAndSoundTestComponent } from './camera-and-sound-test/camera-and-sound-test.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CameraAndSoundTestComponent
   ],
   imports: [
     BrowserModule
