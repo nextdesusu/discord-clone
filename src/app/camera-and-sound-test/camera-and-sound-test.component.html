@@ -1,1 +1,6 @@
-<p>camera-and-sound-test works!</p>
+<video #cameraTest autoplay></video>
+<audio #soundTest controls></audio>
+<button (click)="stopRecordSound()">stop audio</button>
+<button (click)="stopRecordVideo()">stop video</button>
+<button (click)="startRecordVideo()">video</button>
+<button (click)="startRecordSound()">sound</button>
