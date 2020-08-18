@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import DC_API from "../../DC-API";
+import { getRecordedSoundFunction } from "../../DC-API/types";
 
 @Component({
   selector: 'app-camera-and-sound-test',
@@ -10,7 +11,7 @@ export class CameraAndSoundTestComponent implements AfterViewInit {
   @ViewChild("cameraTest") cameraTest: ElementRef;
   @ViewChild("soundTest") soundTest: ElementRef;
   videoStream: MediaStream;
-  soundRecord: any = null;
+  stopSoundRecord: getRecordedSoundFunction | null = null;
   constructor() { }
 
   ngAfterViewInit(): void {
@@ -19,7 +20,7 @@ export class CameraAndSoundTestComponent implements AfterViewInit {
   startRecordSound() {
     DC_API.recordSound(10)
       .then((stopFunction) => {
-        this.soundRecord = stopFunction;
+        this.stopSoundRecord = stopFunction;
       })
   }
 
@@ -32,11 +33,11 @@ export class CameraAndSoundTestComponent implements AfterViewInit {
   }
 
   stopRecordSound() {
-    if (this.soundRecord !== null) {
-      const URLSRC: string = this.soundRecord();
+    if (this.stopSoundRecord !== null) {
+      const URLSRC: string = this.stopSoundRecord();
       const soundTest = this.soundTest.nativeElement;
       soundTest.src = URLSRC;
-      this.soundRecord = null;
+      this.stopSoundRecord = null;
     }
   }
 

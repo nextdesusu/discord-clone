@@ -1,0 +1,9 @@
+<audio #audioNode autoplay></audio>
+<video #localVideo playsinline autoplay muted></video>
+<video #remoteVideo playsinline autoplay></video>
+<button (click)="joinChat()">joinChat</button>
+<input (input)="getChatInput($event)" />
+<button (click)="sendMessage(chatInput)">new message</button>
+<ul>
+    <li *ngFor="let message of messages">{{message.message}}</li>
+</ul>
